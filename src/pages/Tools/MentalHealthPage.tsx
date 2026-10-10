@@ -24,6 +24,7 @@ export type MpTopic = {
   image: string
   tags: string[]
   context: string
+  link?: string
 }
 export type MpProject = { title: string; text: string; tags: string[]; alt: string }
 export type MpOther = { key: string; label: string; path: string; lead: string; count: number; fallback: string }
@@ -283,6 +284,16 @@ function Study({ topics }: { topics: MpTopic[] }) {
                     ))}
                   </ul>
                   <p className="mp-context">{t.context}</p>
+                  {t.link && (
+                    <a
+                      href={t.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mp-btn mp-btn-ink mp-panel-link"
+                    >
+                      Visit {t.title.replace(/^.*\(([^)]+)\)$/, "$1")} site <Arrow />
+                    </a>
+                  )}
                 </div>
               </article>
             </Reveal>

@@ -120,6 +120,7 @@
 .mp-kicker { display: inline-block; padding: 7px 14px; border-radius: 99px; background: rgba(255, 255, 255, 0.8); font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet); }
 .mp-panel-copy h3 { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(30px, 3vw, 42px); line-height: 1.06; letter-spacing: -0.02em; margin: 14px 0 12px; }
 .mp-panel-copy > p { font-size: 17px; line-height: 1.75; color: var(--text); margin-bottom: 16px; max-width: 640px; }
+.mp-panel-link { margin-top: 22px; }
 .mp-context { margin: 16px 0 0 !important; padding: 13px 18px; border-radius: 18px; background: rgba(255, 255, 255, 0.72); font-size: 15px !important; line-height: 1.65 !important; max-width: 640px; color: #3f4d78 !important; }
 
 /* ==========================================================
