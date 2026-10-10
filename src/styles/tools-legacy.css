@@ -1,0 +1,121 @@
+/* ==========================================================
+   DASHRES · Research Tools & Topics page
+   ========================================================== */
+:root {
+  --tl-ink: #14224d;
+  --tl-muted: #56658a;
+  --tl-line: #dbe5f6;
+  --tl-blue: #2f4fd0;
+  --tl-orange: #f59a5b;
+  --tl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Scroll reveal helper ---------- */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s var(--tl-ease) var(--d, 0ms),
+    transform 0.8s var(--tl-ease) var(--d, 0ms);
+}
+.rv-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero ---------- */
+.tools-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(55% 120% at 86% 20%, #e4eeff 0%, rgba(228, 238, 255, 0) 70%),
+    linear-gradient(180deg, #f9fbff 0%, #f0f5ff 100%);
+}
+.tools-hero h1 {
+  margin: 22px 0 20px;
+  font-size: clamp(48px, 5.2vw, 80px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  color: var(--tl-ink);
+}
+.tools-hero h1 .ln {
+  display: block;
+  overflow: hidden;
+  padding: 0 0.2em 0.12em 0;
+  margin-bottom: -0.12em;
+}
+.tools-hero h1 .ln > * {
+  display: block;
+  animation: tl-line-up 1s var(--tl-ease) both;
+  animation-delay: var(--d, 0s);
+}
+.tools-hero h1 em {
+  color: var(--tl-blue);
+  font-size: 1.07em;
+  line-height: 1;
+}
+.tools-hero .eyebrow {
+  animation: tl-fade-up 0.8s var(--tl-ease) both;
+}
+
+/* Filter pills (inside hero) */
+
+/* ---------- Topic section ---------- */
+
+/* ---------- Cards ---------- */
+
+/* ---------- Data -> care flow ---------- */
+
+/* ---------- CTA banner ---------- */
+
+/* ---------- Keyframes ---------- */
+@keyframes tl-line-up {
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
+}
+@keyframes tl-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes tl-draw-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes tl-art-in {
+  from { opacity: 0; transform: translateX(56px) scale(1.04); filter: blur(10px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes tl-float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-9px); }
+}
+@keyframes tl-card-rise {
+  from { opacity: 0; transform: translateY(34px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes tl-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes tl-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(5px); }
+}
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .tools-hero { display: flex; flex-direction: column-reverse; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tools-hero * {
+    animation: none !important;
+  }
+  
+  .rv {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

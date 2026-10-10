@@ -1,0 +1,4 @@
+/* Scroll-reveal helper used by <Reveal /> (Home / Projects / Tools). */
+:root { --tl-ease: cubic-bezier(0.2, 0.7, 0.2, 1); }
+.rv { opacity: 0; transform: translateY(22px); transition: opacity 0.8s var(--tl-ease) var(--d, 0ms), transform 0.8s var(--tl-ease) var(--d, 0ms); }
+.rv-in { opacity: 1; transform: none; }

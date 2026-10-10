@@ -1,0 +1,260 @@
+/* ==========================================================
+   DASHRES — Navbar
+   Glass header · pill navigation · gradient CTA · scroll progress
+   Logo (.brand / .brand-symbol / .brand-copy) is intentionally
+   NOT restyled here.
+   ========================================================== */
+
+.site-header {
+  --nb-navy: #172344;
+  --nb-blue: #3049c3;
+  --nb-blue-2: #5367e9;
+  --nb-soft: #eef1fc;
+  --nb-peach: #ff9d70;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid rgba(206, 214, 240, 0.55);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom-color: rgba(206, 214, 240, 0.9);
+  box-shadow: 0 12px 34px -14px rgba(23, 35, 68, 0.22);
+}
+
+.site-header .header-inner {
+  height: 88px;
+  gap: 28px;
+  position: relative;
+  transition: height 0.3s ease;
+}
+.site-header.is-scrolled .header-inner { height: 72px; }
+
+/* logo gently scales down on scroll (same logo, just smaller) */
+.site-header .brand { transition: transform 0.3s ease, opacity 0.2s; transform-origin: left center; }
+.site-header.is-scrolled .brand { transform: scale(0.9); }
+
+/* ---------- nav links (clean, underline-on-hover) ---------- */
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 0;
+}
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: 12px;
+}
+.site-header .nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 2px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #3d4968;
+  transition: color 0.2s ease;
+}
+.site-header .nav-link:hover { color: var(--nb-blue); background: none; transform: none; }
+.site-header .nav-link.active { color: var(--nb-blue); background: none; box-shadow: none; }
+
+/* animated gradient underline */
+.site-header .nav-link:after,
+.site-header .nav-link.active:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0; right: 0; bottom: 0;
+  width: auto; height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--nb-blue), var(--nb-blue-2) 60%, var(--nb-peach));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-header .nav-link:hover:after,
+.site-header .nav-link.active:after { transform: scaleX(1); }
+.nav-link-arrow { display: none; width: 18px; height: 18px; }
+
+/* ---------- actions / CTA ---------- */
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #3b57e0 0%, #2a3fb5 100%);
+  box-shadow: 0 8px 20px -8px rgba(48, 73, 195, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s;
+  white-space: nowrap;
+}
+.nav-cta svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -10px rgba(48, 73, 195, 0.8);
+  filter: brightness(1.06);
+}
+.nav-cta:hover svg { transform: translate(2px, -2px); }
+.nav-cta-mobile { display: none; }
+
+/* ---------- scroll progress ---------- */
+.scroll-progress {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scroll-progress > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #3049c3, #7a8cf5 55%, #ff9d70);
+  transition: transform 0.08s linear;
+}
+
+/* ---------- hamburger ---------- */
+.site-header .menu-toggle {
+  display: none;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #dbe1f5;
+  border-radius: 14px;
+  background: #fff;
+  padding: 0;
+  box-shadow: 0 4px 12px -6px rgba(23, 35, 68, 0.25);
+  transition: background 0.2s, border-color 0.2s;
+}
+.site-header .menu-toggle span {
+  position: absolute;
+  left: 13px;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--nb-navy);
+  transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+}
+.site-header .menu-toggle span:nth-child(1) { top: 16px; }
+.site-header .menu-toggle span:nth-child(2) { top: 22px; width: 14px; }
+.site-header .menu-toggle span:nth-child(3) { top: 28px; }
+.site-header .menu-toggle.is-open { background: var(--nb-soft); border-color: #c9d3f6; }
+.site-header .menu-toggle.is-open span:nth-child(1) { top: 22px; transform: rotate(45deg); }
+.site-header .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+.site-header .menu-toggle.is-open span:nth-child(3) { top: 22px; transform: rotate(-45deg); width: 20px; }
+
+/* ---------- backdrop (mobile) ---------- */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: rgba(14, 22, 52, 0.38);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+/* ---------- tablet ---------- */
+@media (max-width: 1100px) {
+  .nav-pill { gap: 28px; }
+  .site-header .nav-link { font-size: 14.5px; }
+  .site-header .header-inner { gap: 16px; }
+}
+
+/* ---------- mobile / tablet menu ---------- */
+@media (max-width: 900px) {
+  .site-header .header-inner,
+  .site-header.is-scrolled .header-inner { height: 72px; }
+  .site-header .menu-toggle { display: block; }
+  .header-actions .nav-cta { display: none; }
+  .header-actions { margin-left: auto; }
+
+  .site-header .nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 18px; right: 18px;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e3e8f7;
+    border-radius: 22px;
+    box-shadow: 0 30px 60px -20px rgba(23, 35, 68, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+  .site-header .nav.nav-open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .nav-backdrop.show { opacity: 1; visibility: visible; }
+
+  .nav-pill {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    margin: 0;
+  }
+  .site-header .nav-link {
+    justify-content: space-between;
+    padding: 15px 16px;
+    border: 0;
+    border-radius: 14px;
+    font-size: 16.5px;
+    color: var(--nb-navy);
+  }
+  .site-header .nav-link:hover { background: var(--nb-soft); }
+  .site-header .nav-link.active {
+    background: linear-gradient(135deg, #eef1fc, #f7f0ff);
+    box-shadow: none;
+    color: var(--nb-blue);
+  }
+  .site-header .nav-link:after,
+  .site-header .nav-link.active:after { display: none; }
+  .nav-link-arrow { display: block; opacity: 0.45; }
+  .site-header .nav-link.active .nav-link-arrow { opacity: 1; }
+
+  .nav-cta-mobile { display: inline-flex; padding: 15px 20px; font-size: 16px; }
+}
+
+@media (max-width: 520px) {
+  .site-header .nav { left: 12px; right: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header * { transition: none !important; }
+}
+
+/* `overflow:hidden` on the shell stopped the sticky header from sticking.
+   `clip` keeps the horizontal clipping but allows position:sticky to work. */
+.site-shell.site-shell { overflow: visible; overflow-x: clip; }
+.site-header { position: sticky; top: 0; z-index: 50; }
+
+/* solid white header while the mobile menu is open */
+.site-header:has(.nav-open) { background: #fff; }
